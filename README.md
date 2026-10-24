@@ -8,6 +8,10 @@
 ### Configuración inicial (NAT) y transición a Red Interna (Internal Network)
 Inicialmente, el adaptador de red se configuró en modo **NAT** para permitir que la máquina virtual tuviera salida controlada a Internet, facilitando la descarga de parches y actualizaciones de seguridad críticas. Una vez completado este proceso, la interfaz se cambió a **Red Interna** (*Internal Network*).
 Este modo aísla de forma absoluta la VM tanto del sistema anfitrión (*Host*) como de Internet y de la red local física, permitiendo únicamente comunicación con otras máquinas virtuales que compartan el mismo segmento de red interna. De esta manera, se garantiza un entorno de contención estricto para análisis y pruebas de ciberseguridad, impidiendo cualquier fuga de tráfico malicioso hacia el exterior.
+Para mejorar la usabilidad del laboratorio y el rendimiento gráfico de la máquina virtual, se instalaron las **Guest Additions**:
+1. En el menú de VirtualBox con la VM encendida, se seleccionó **Dispositivos > Insertar imagen de CD de las Guest Additions**.
+2. Desde el explorador de archivos de la VM, se ejecutó el instalador `VBoxWindowsAdditions.exe` con privilegios de administrador.
+3. Se completó el asistente de instalación y se reinició la máquina virtual para aplicar los controladores de pantalla e integración del puntero.
 ### ¿Por qué se evita el Modo Puente (Bridge / Adaptador Puente)?
 Se descartó explícitamente el uso del **Modo Puente** porque este conecta la máquina virtual directamente a la red física local del hogar o empresa, asignándole una dirección IP dentro del mismo rango que los demás dispositivos. 
 Usar modo puente en un laboratorio de seguridad representa un riesgo crítico:
