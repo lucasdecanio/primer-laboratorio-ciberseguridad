@@ -7,7 +7,7 @@
 ## Paso 1: Configuración y aislamiento de red en NAT
 Se configuró el adaptador de red en modo **NAT** para aislar el sistema invitado (*guest*) de la red local física y del sistema anfitrión (*host*). Esta configuración permite que la máquina virtual acceda a Internet para descargar actualizaciones y paquetes necesarios, impidiendo al mismo tiempo cualquier conexión entrante directa desde el exterior hacia el entorno de prueba. 
 No se utilizó el modo puente (*Bridged Adapter*) debido a que este asigna una dirección IP de la red física local a la máquina virtual, exponiéndola como un dispositivo más y eliminando la barrera del entorno aislado del laboratorio y la red doméstica.
-![Configuración de Red](img/configuracion-red.png)
+![Configuración de Red](configuracion-red.png)
 ---
 ## Paso 2: Creación de usuario estándar y principio de mínimo privilegio
 Se creó una cuenta de usuario estándar para las tareas operativas diarias y pruebas de software dentro del laboratorio. Esta medida implementa el **principio de mínimo privilegio**, garantizando que el usuario solo cuente con los permisos indispensables para ejecutar programas básicos. 
