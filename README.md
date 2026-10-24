@@ -19,6 +19,6 @@ Se procedió a buscar, descargar e instalar todas las actualizaciones del sistem
 ![Windows Update Actualizado](img/actualizaciones-sistema.png)
 ---
 ## Paso 4: Creación de Instantánea (Snapshot) de línea base
-** Tras completar la configuración inicial, la creación del usuario estándar y la aplicación de parches, se apagó la máquina virtual y se generó una instantánea (*snapshot*) denominada **"Hardening Inicial"** (o *"Clean Install - Hardening applied"*).** 
+Tras completar la configuración inicial, la creación del usuario estándar y la aplicación de parches, se apagó la máquina virtual y se generó una instantánea (*snapshot*) denominada **"Hardening Inicial"** (o *"Clean Install - Hardening applied"*).
 ## Esta acción establece una línea base segura y un punto de restauración confiable. Ante cualquier fallo del sistema, infección controlada por malware o prueba destructiva en el laboratorio, permite revertir la máquina a este estado íntegro y limpio en segundos sin necesidad de reinstalar el sistema operativo desde cero.**
 ![Snapshot de Línea Base](img/snapshot-inicial.png)
