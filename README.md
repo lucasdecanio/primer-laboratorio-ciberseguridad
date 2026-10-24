@@ -15,6 +15,8 @@ Para mejorar la usabilidad del laboratorio y el rendimiento gráfico de la máqu
 ### ¿Por qué se evita el Modo Puente (Bridge / Adaptador Puente)?
 Se descartó explícitamente el uso del **Modo Puente** porque este conecta la máquina virtual directamente a la red física local del hogar o empresa, asignándole una dirección IP dentro del mismo rango que los demás dispositivos. 
 Usar modo puente en un laboratorio de seguridad representa un riesgo crítico:
+1. **Exposición bidireccional:** La VM queda visible y accesible para cualquier otro dispositivo de la red física.
+2. **Riesgo de propagación:** Tráfico de escaneo, pruebas de concepto o posibles amenazas dentro de la VM podrían alcanzar la red doméstica y comprometer equipos reales.
 ![Configuración de Red](configuracion-red.png)
 ---
 ## Paso 2: Creación de usuario estándar y principio de mínimo privilegio
