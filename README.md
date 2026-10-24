@@ -4,9 +4,13 @@
 - **Estudiante:** Lucas Gustavo Decanio
 - **Fecha de entrega:** Octubre de 2026
 ---
-## Paso 1: Configuración y aislamiento de red en NAT
-Se configuró el adaptador de red de la máquina virtual en modo **NAT**. 
-Este modo crea una red privada virtual donde la máquina física (Host) actúa como un router y firewall mediante traducción de direcciones de red. Esto aísla a la VM de la red física local (evitando que interactúe directamente con otros dispositivos del hogar o exponga puertos locales) y a la vez le permite tener salida a Internet para descargar las actualizaciones de seguridad del sistema operativo.
+## Paso 1: Configuración y aislamiento de red
+### Configuración inicial (NAT) y transición a Red Interna (Internal Network)
+Inicialmente, el adaptador de red se configuró en modo **NAT** para permitir que la máquina virtual tuviera salida controlada a Internet, facilitando la descarga de parches y actualizaciones de seguridad críticas. Una vez completado este proceso, la interfaz se cambió a **Red Interna** (*Internal Network*).
+Este modo aísla de forma absoluta la VM tanto del sistema anfitrión (*Host*) como de Internet y de la red local física, permitiendo únicamente comunicación con otras máquinas virtuales que compartan el mismo segmento de red interna. De esta manera, se garantiza un entorno de contención estricto para análisis y pruebas de ciberseguridad, impidiendo cualquier fuga de tráfico malicioso hacia el exterior.
+### ¿Por qué se evita el Modo Puente (Bridge / Adaptador Puente)?
+Se descartó explícitamente el uso del **Modo Puente** porque este conecta la máquina virtual directamente a la red física local del hogar o empresa, asignándole una dirección IP dentro del mismo rango que los demás dispositivos. 
+Usar modo puente en un laboratorio de seguridad representa un riesgo crítico:
 ![Configuración de Red](configuracion-red.png)
 ---
 ## Paso 2: Creación de usuario estándar y principio de mínimo privilegio
