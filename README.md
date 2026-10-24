@@ -1,4 +1,3 @@
-<img width="1897" height="1012" alt="configuracion-red" src="https://github.com/user-attachments/assets/1d7c78af-c7e7-4de0-a6c2-eaef0ab47531" />
 # Reporte Técnico: Mi Primer Laboratorio Seguro de Ciberseguridad
 - **Curso:** Ciberseguridad
 - **Comisión:** 90885
