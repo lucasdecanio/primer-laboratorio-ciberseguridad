@@ -5,8 +5,8 @@
 - **Fecha de entrega:** Octubre de 2026
 ---
 ## Paso 1: Configuración y aislamiento de red en NAT
-Se configuró el adaptador de red en modo **NAT** para aislar el sistema invitado (*guest*) de la red local física y del sistema anfitrión (*host*). Esta configuración permite que la máquina virtual acceda a Internet para descargar actualizaciones y paquetes necesarios, impidiendo al mismo tiempo cualquier conexión entrante directa desde el exterior hacia el entorno de prueba. 
-No se utilizó el modo puente (*Bridged Adapter*) debido a que este asigna una dirección IP de la red física local a la máquina virtual, exponiéndola como un dispositivo más y eliminando la barrera del entorno aislado del laboratorio y la red doméstica.
+Se configuró el adaptador de red de la máquina virtual en modo **NAT**. 
+Este modo crea una red privada virtual donde la máquina física (Host) actúa como un router y firewall mediante traducción de direcciones de red. Esto aísla a la VM de la red física local (evitando que interactúe directamente con otros dispositivos del hogar o exponga puertos locales) y a la vez le permite tener salida a Internet para descargar las actualizaciones de seguridad del sistema operativo.
 ![Configuración de Red](configuracion-red.png)
 ---
 ## Paso 2: Creación de usuario estándar y principio de mínimo privilegio
@@ -16,6 +16,14 @@ De esta forma, si se descarga un archivo malicioso o se accede a un sitio compro
 ---
 ## Paso 3: Actualizaciones del sistema y mitigación de vulnerabilidades
 Se procedió a buscar, descargar e instalar todas las actualizaciones del sistema mediante **Windows Update**, incluyendo parches de seguridad acumulativos y definiciones del antivirus. Esta medida es fundamental dentro del proceso de *hardening* para mitigar vulnerabilidades conocidas y corregir fallos del sistema operativo, reduciendo la superficie de exposición ante posibles amenazas o *exploits*.
+| Característica | Red Interna | Solo-Anfitrión (Host-Only) |
+| :--- | :--- | :--- |
+| Conexión Host ↔ Guest | No | Sí (interfaz virtual privada) |
+| Salida a Internet | No | No |
+| Comunicación entre VMs | Sí (mismo identificador) | Sí |
+| Caso de uso principal | Laboratorios de contención total | Administración segura desde el Host |
+**¿Por qué la VM no necesita Internet en esta etapa?**
+Una vez aplicadas las actualizaciones y parches de seguridad (mediante NAT en la fase inicial), la salida a Internet debe cortarse siguiendo el principio de mínimo privilegio y contención. Esto asegura que ninguna herramienta de prueba o tráfico del laboratorio filtre hacia el exterior y mantiene el entorno inmutable para las prácticas de ciberseguridad.
 ![Windows Update Actualizado](actualizaciones-sistema.png)
 ---
 ## Paso 4: Creación de Instantánea (Snapshot) de línea base
